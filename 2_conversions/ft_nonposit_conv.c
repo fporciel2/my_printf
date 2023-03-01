@@ -6,13 +6,13 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:24:25 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/01 14:57:51 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/01 15:20:57 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_nonposit_conv(const char *format, int *i, va_list *ap1)
+int	ft_nonposit_conv(const char *format, int *i, va_list *ap1, va_list ap)
 {
 	int			j;
 	int			result;
