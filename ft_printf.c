@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:30:55 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/01 09:52:55 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:47:18 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static int	ft_printf1(const char *format, va_list ap, int result, va_list ap1)
 		else if (ft_is_format_spec(format, i) == 0)
 			i++;
 		else if (ft_is_format_spec(format, i) == 1)
-			result = ft_printf2(format, result, &i);
+			result = result + ft_printf2(format, result, &i);
 		else if (ft_is_format_spec(format, i) == 2)
-			result = ft_nonposit_conv(format, &i, &ap1);
+			result = result + ft_nonposit_conv(format, &i, ap1);
 		else if (ft_is_format_spec(format, i) == 3)
-			result = ft_posit_conv(format, &i, ap);
+			result = result + ft_posit_conv(format, &i, ap);
 	}
 	return (result);
 }
