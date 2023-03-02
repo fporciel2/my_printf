@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:24:41 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/02 10:00:34 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/02 10:30:48 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	ft_has_pos_arg(const char *format, int i);
 int	ft_has_flags(const char *format, int i);
 int	ft_has_min_fieldwidth(const char *format, int i);
 int	ft_has_precision(const char *format, int i);
+int	ft_has_lengthmod(const char *format, int i);
 
 #endif
