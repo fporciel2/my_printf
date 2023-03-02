@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_has_pos_arg.c                                   :+:      :+:    :+:   */
+/*   ft_has_flags.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 17:17:29 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/01 17:58:03 by fporciel         ###   ########.fr       */
+/*   Created: 2023/03/01 17:44:38 by fporciel          #+#    #+#             */
+/*   Updated: 2023/03/02 09:19:31 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_has_pos_arg(const char *format, int i)
+static int	ft_has_flags2(const char *format, int j)
+{
+	if (!(ft_isflag(format[j])))
+		return (0);
+	else
+	{
+		while (ft_isflag(format[j]))
+			j++;
+		return (ft_has_min_fieldwidth(format, j));
+	}
+}
+
+int	ft_has_flags(const char *format, int i)
 {
 	int	j;
 
 	j = i;
-	if (!(ft_isdigit(format[j])))
-		return (0);
-	else
+	if (format[j - 1] != 37)
 	{
-		while (ft_isdigit(format[j]))
-			j++;
-		if (format[j] == 36)
-		{
-			i++;
-			return (ft_has_flags(format, j));
-		}
+		if (!(ft_isflag(format[j])))
+			return (ft_has_min_fieldwidth(format, j));
 		else
-			return (0);
+		{
+			while (ft_isflag(format[j]))
+				j++;
+			return (ft_has_min_fieldwidth(format, j));
+		}
 	}
+	else
+		return (ft_has_flags2(format[j]));
 }
