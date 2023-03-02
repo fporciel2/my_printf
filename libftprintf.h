@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:24:41 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/02 10:49:12 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:30:49 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	ft_has_min_fieldwidth(const char *format, int i);
 int	ft_has_precision(const char *format, int i);
 int	ft_has_lengthmod(const char *format, int i);
 int	ft_is_conv_spec(const char formati);
+int	ft_conversion(const char *format, int *i, __va_elem_t *node, va_list ap);
 
 #endif

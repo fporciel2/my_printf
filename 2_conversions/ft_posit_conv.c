@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:26:18 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/01 17:14:04 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:12:23 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static __va_elem_t	*ft_goto_position(__va_elem_t **node, int positional_arg)
 	while (positional_arg != 1)
 	{
 		(*node) = (*node)->__va_next;
-		positional_arg;
+		positional_arg--;
+		if (((*node)->__va_next) == NULL)
+			break ;
 	}
 	return (*node);
 }
