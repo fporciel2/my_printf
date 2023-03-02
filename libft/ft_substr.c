@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:54:54 by fporciel          #+#    #+#             */
-/*   Updated: 2023/02/07 17:42:24 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:10:20 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	j;
 
 	if ((s == NULL) || (*s == 0))
-		return (s);
+		return ((char *)(""));
 	slen = ft_slen(s);
 	i = start;
 	sstr = NULL;
