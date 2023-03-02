@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:24:25 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/01 17:13:34 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:42:05 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 int	ft_nonposit_conv(const char *format, int *i, va_list *ap1, va_list ap)
 {
-	int			j;
 	int			result;
 	__va_elem_t	*node;
 
-	j = 0;
-	result = 0;
 	node = (*ap1)->__ap;
+	(*i)++;
 	result = ft_conversion(format, i, node, ap);
 	(*ap1)->__ap = node->__va_next;
 	free(node);

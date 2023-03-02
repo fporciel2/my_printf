@@ -6,22 +6,22 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:26:18 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/02 11:12:23 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:34:57 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static __va_elem_t	*ft_goto_position(__va_elem_t **node, int positional_arg)
+static __va_elem_t	*ft_goto_position(__va_elem_t *node, int positional_arg)
 {
 	while (positional_arg != 1)
 	{
-		(*node) = (*node)->__va_next;
+		node = node->__va_next;
 		positional_arg--;
-		if (((*node)->__va_next) == NULL)
+		if ((node->__va_next) == NULL)
 			break ;
 	}
-	return (*node);
+	return (node);
 }
 
 static int	ft_power(int base, int exp)
@@ -75,7 +75,10 @@ int	ft_posit_conv(const char *format, int *i, va_list ap)
 	j = (*i) + 1;
 	node = ap->__ap;
 	positional_arg = ft_calculate_position(format, j);
-	node = ft_goto_position(&node, positional_arg);
+	node = ft_goto_position(node, positional_arg);
+	while (format[(*i)] != 36)
+		(*i)++;
+	(*i)++;
 	result = ft_conversion(format, i, node, ap);
 	free(node);
 	return (result);
