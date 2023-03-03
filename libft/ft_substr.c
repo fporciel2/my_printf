@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:54:54 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/02 15:10:20 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:59:57 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ static size_t	ft_slen(char const *s)
 	return (i);
 }
 
-static size_t	ft_l(char *sstr, char const *s, unsigned int start, size_t len)
+static size_t	ft_l(char const *s, unsigned int start, size_t len)
 {
 	size_t	j;
 
 	j = 0;
 	if (start >= ft_slen(s))
 		return (0);
-	sstr = (char *)&s[start];
-	while (*(sstr++) && (j < len))
+	while ((s[j] != 0) && (j < len))
 		j++;
 	return (j);
 }
@@ -43,11 +42,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	j;
 
 	if ((s == NULL) || (*s == 0))
-		return ((char *)(""));
+		return (ft_strdup(""));
 	slen = ft_slen(s);
 	i = start;
-	sstr = NULL;
-	j = ft_l(sstr, s, start, len);
+	j = ft_l(s, start, len);
 	sstr = (char *)malloc(sizeof(char) * (j + 1));
 	if (sstr == NULL)
 		return (NULL);
