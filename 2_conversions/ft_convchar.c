@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nonposit_conv.c                                 :+:      :+:    :+:   */
+/*   ft_convchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fporciel <fporciel@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 10:24:25 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/03 10:12:03 by fporciel         ###   ########.fr       */
+/*   Created: 2023/03/03 10:14:54 by fporciel          #+#    #+#             */
+/*   Updated: 2023/03/03 11:35:25 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_nonposit_conv(const char *format, int *i, va_list *ap1, va_list ap)
+int	ft_convchar(const char *format, int *i, __va_elem_t *node, va_list ap)
 {
-	int			result;
-	__va_elem_t	*node;
+	int	casting;
 
-	node = (*ap1)->__ap;
-	(*i)++;
-	result = ft_conversion(format, i, node, ap);
-	(*ap1)->__ap = node->__va_next;
-	free(node);
-	return (result);
+	if (format[(*i) - 1] == 37)
+	{
+		write(1, (node->__va_arg), 1);
+		return (1);
+	}
+	if (ft_islengthmod(format[(*i) - 1]))
+		casting = ft_check_lengthmod(format, i);
 }
