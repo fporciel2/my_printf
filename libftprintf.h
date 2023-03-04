@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:24:41 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/03 10:12:55 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/04 07:20:29 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	ft_is_conv_spec(const char formati);
 int	ft_conversion(const char *form, int *i, __va_elem_t *nd, va_list ap);
 int	ft_isflag(const char formati);
 int	ft_islengthmod(const char formati);
+int	ft_convchar(const char *format, int *i, __va_elem_t *node, va_list ap);
 
 #endif
