@@ -6,7 +6,7 @@
 /*   By: fporciel <fporciel@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:14:54 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/04 07:17:39 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/04 07:45:20 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ static int	ft_printchar(int memalloc, int *i, __va_elem_t *node)
 
 	i = 0;
 	result = 0;
-	while ((i + 1) != (memalloc - 1))
+	if (memalloc > 0)
 	{
-		write(1, " ", 1);
-		i++;
+		while ()
+		{
+			write(1, " ", 1);
+			i++;
+			result++;
+		}
+		write(1, (node->__va_arg), 1);
 		result++;
 	}
-	write(1, (node->__va_arg), 1);
-	result++;
 	return (result);
 }
 
@@ -34,17 +37,17 @@ static int	ft_charstr(int prec, int minf)
 {
 	int		memalloc;
 
-	memalloc = 2;
+	memalloc = 1;
 	if ((prec == 0) && (minf == 0))
 		memalloc = memalloc;
 	else if (minf == 0)
 	{
 		if (memalloc > prec)
-			memalloc = (prec + 1);
+			memalloc = prec;
 	}
 	else if (minf > memalloc)
-		memalloc = (minf + 1);
-	return (charstr);
+		memalloc = minf;
+	return (memalloc);
 }
 
 int	ft_convchar(const char *format, int *i, __va_elem_t *node, va_list ap)
