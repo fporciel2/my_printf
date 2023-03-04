@@ -6,15 +6,32 @@
 /*   By: fporciel <fporciel@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:14:54 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/03 18:06:44 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/04 07:17:39 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char	*ft_charstr(int prec, int minf)
+static int	ft_printchar(int memalloc, int *i, __va_elem_t *node)
 {
-	char	*charstr;
+	int	i;
+	int	result;
+
+	i = 0;
+	result = 0;
+	while ((i + 1) != (memalloc - 1))
+	{
+		write(1, " ", 1);
+		i++;
+		result++;
+	}
+	write(1, (node->__va_arg), 1);
+	result++;
+	return (result);
+}
+
+static int	ft_charstr(int prec, int minf)
+{
 	int		memalloc;
 
 	memalloc = 2;
@@ -27,11 +44,7 @@ static char	*ft_charstr(int prec, int minf)
 	}
 	else if (minf > memalloc)
 		memalloc = (minf + 1);
-	charstr = (char *)malloc((char) * memalloc);
-	if (charstr == NULL)
-		return (NULL);
-	else
-		return (charstr);
+	return (charstr);
 }
 
 int	ft_convchar(const char *format, int *i, __va_elem_t *node, va_list ap)
@@ -56,5 +69,5 @@ int	ft_convchar(const char *format, int *i, __va_elem_t *node, va_list ap)
 		flag = ft_check_flags(format, i);
 	while (!(ft_is_conv_spec(format[(*i)])))
 		(*i)++;
-	return (ft_printchar(ft_charstr(prec, minf), i, node, ap));
+	return (ft_printchar(ft_charstr(prec, minf), i, node));
 }
