@@ -6,11 +6,28 @@
 /*   By: fporciel <fporciel@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:45:14 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/05 08:20:39 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/05 13:17:40 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static int	ft_newstr(int prec, int minf, char *str)
+{
+	int	memalloc;
+
+	memalloc = ((int)ft_strlen(str) + 1);
+	if ((prec == 0) && (minf == 0))
+		memalloc = memalloc;
+	else if (minf == 0)
+	{
+		if (memalloc > prec)
+			memalloc = prec;
+	}
+	else if (minf > memalloc)
+		memalloc = minf;
+	return (memalloc);
+}
 
 static int	ft_printstr1(int memalloc, int *i, __va_elem_t *node, int flag)
 {
@@ -58,23 +75,6 @@ static int	ft_printstr(int memalloc, int *i, __va_elem_t *node, int flag)
 	}
 	else
 		return (ft_printstr1(memalloc, i, node, flag));
-}
-
-static int	ft_newstr(int prec, int minf, char *str)
-{
-	int	memalloc;
-
-	memalloc = ((int)ft_strlen(str) + 1);
-	if ((prec == 0) && (minf == 0))
-		memalloc = memalloc;
-	else if (minf == 0)
-	{
-		if (memalloc > prec)
-			memalloc = prec;
-	}
-	else if (minf > memalloc)
-		memalloc = minf;
-	return (memalloc);
 }
 
 int	ft_convstr(const char *format, int *i, __va_elem_t *node, va_list ap)

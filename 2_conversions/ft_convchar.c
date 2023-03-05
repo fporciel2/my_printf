@@ -6,11 +6,28 @@
 /*   By: fporciel <fporciel@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:14:54 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/05 08:22:28 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/05 13:16:40 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static int	ft_charstr(int prec, int minf)
+{
+	int		memalloc;
+
+	memalloc = 1;
+	if ((prec == 0) && (minf == 0))
+		memalloc = memalloc;
+	else if (minf == 0)
+	{
+		if (memalloc > prec)
+			memalloc = prec;
+	}
+	else if (minf > memalloc)
+		memalloc = minf;
+	return (memalloc);
+}
 
 static int	ft_printchar(int memalloc, int *i, __va_elem_t *node)
 {
@@ -31,23 +48,6 @@ static int	ft_printchar(int memalloc, int *i, __va_elem_t *node)
 		result++;
 	}
 	return (result);
-}
-
-static int	ft_charstr(int prec, int minf)
-{
-	int		memalloc;
-
-	memalloc = 1;
-	if ((prec == 0) && (minf == 0))
-		memalloc = memalloc;
-	else if (minf == 0)
-	{
-		if (memalloc > prec)
-			memalloc = prec;
-	}
-	else if (minf > memalloc)
-		memalloc = minf;
-	return (memalloc);
 }
 
 int	ft_convchar(const char *format, int *i, __va_elem_t *node, va_list ap)

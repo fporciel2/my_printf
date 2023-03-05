@@ -6,7 +6,7 @@
 /*   By: fporciel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 11:12:50 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/03 10:11:35 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/05 12:05:28 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_conversion(const char *format, int *i, __va_elem_t *node, va_list ap)
 	else if (format[(*i)] == 105)
 		return (ft_convint(format, i, node, ap));
 	else if (format[(*i)] == 117)
-		return (ft_convunsdec(format, i, node, ap));
+		return (ft_convudec(format, i, node, ap));
 	else if (format[(*i)] == 120)
 		return (ft_convlhex(format, i, node, ap));
 	else if (format[(*i)] == 88)
