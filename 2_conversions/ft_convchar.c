@@ -6,7 +6,7 @@
 /*   By: fporciel <fporciel@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:14:54 by fporciel          #+#    #+#             */
-/*   Updated: 2023/03/04 14:03:39 by fporciel         ###   ########.fr       */
+/*   Updated: 2023/03/05 08:22:28 by fporciel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_printchar(int memalloc, int *i, __va_elem_t *node)
 	result = 0;
 	if (memalloc > 0)
 	{
-		while ()
+		while (memalloc-- > 1)
 		{
 			write(1, " ", 1);
 			i++;
