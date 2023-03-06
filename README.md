@@ -1,2 +1,2 @@
-# ft_printf
-Implementation of C ft_printf function for 42School Cursus.
+# my_printf
+Experimental implementation of printf. Do not use for 42School Cursus.
