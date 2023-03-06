@@ -20,6 +20,7 @@ static int	ft_printf2(const char *format, int result, int *i)
 		write(1, &(format[(*i)]), 1);
 		result++;
 	}
+	(*i)++;
 	return (result);
 }
 
